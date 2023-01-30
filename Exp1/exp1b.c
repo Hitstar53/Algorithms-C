@@ -78,7 +78,7 @@ void timer() {
     }
 }
 int main() {
-    // dataInput();
+    dataInput();
     timer();
     return 0;
 }
