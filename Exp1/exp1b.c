@@ -2,12 +2,12 @@
 #include<stdlib.h>
 #include<math.h>
 #include<time.h>
-//input function
+//data function
 void dataInput() {
     //generate 100000 random numbers
     for (int i=0;i<100000; i++)
     {
-        int temp = rand() % 100000000;
+        int temp = rand() % 1000000000;
         FILE *fptr;
         fptr = fopen("data.txt", "a");
         fprintf(fptr, "%d\n", temp);
@@ -15,29 +15,26 @@ void dataInput() {
     }
 }
 //swap function
-void swap(int *xp, int *yp) {
-    int temp = *xp;
+void swap(long *xp, long *yp) {
+    long temp = *xp;
     *xp = *yp;
     *yp = temp;
 }
 //selection sort algorithm
-void selectionSort(int arr[], int n) {
+void selectionSort(long arr[], int n) {
     int i, j, min_idx;
-    // One by one move boundary of unsorted subarray
     for (i = 0; i < n-1; i++) {
-        // Find the minimum element in unsorted array
         min_idx = i;
         for (j = i+1; j < n; j++)
             if (arr[j] < arr[min_idx])
             {
                 min_idx = j;
             }
-        // Swap the found minimum element with the first element
         swap(&arr[min_idx], &arr[i]);
     }
 }
 //insertion sort algorithm
-void insertionSort(int arr[], int n) {
+void insertionSort(long arr[], int n) {
     int i, key, j;
     for (i = 1; i < n; i++) {
         key = arr[i];
@@ -49,36 +46,38 @@ void insertionSort(int arr[], int n) {
         arr[j+1] = key;
     }
 }
-void timer() {
+int main() {
+    //generate data
+    dataInput();//
     //read data from file
     FILE *fptr;
     fptr = fopen("data.txt", "r");
-    int arr[100000];
-    for (int i=0;i<100000; i++)
+    long arr[100000], arr1[100000], arr2[100000];
+    for (int i = 0; i < 100000; i++)
     {
-        fscanf(fptr, "%d", &arr[i]);
+        fscanf(fptr, "%8ld", &arr[i]);
     }
     fclose(fptr);
-    //initialise time variable for selection sort
-    clock_t st, et;
-    st = clock();
-    int j;
-    //call selection sort function
-    for(int i=100,j=0;j<=1000;i+=100,j+=1)
-    {
-        int arr2[100000];
-        for (int i=0;i<100000; i++)
-        {
-            arr2[i] = arr[i];
+    int s = 100;
+    printf("Size\tSelection Sort\tInsertion Sort\n");
+    for(int i=0;i<=1000;i++) {
+        for (int j = 0; j < 100000; j++) {
+            arr1[j] = arr[j];
+            arr2[j] = arr[j];
         }
-        selectionSort(arr2, i);
-        et = clock();
-        double t = (double)(et-st)/CLOCKS_PER_SEC;
-        printf("Time taken for selection sort %d: %fs \n",i,t);
+        double diff1, diff2;
+        struct timespec start, end;
+        int i;
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        selectionSort(arr1, s);
+        clock_gettime(CLOCK_MONOTONIC, &end);
+        diff1 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0;
+        clock_gettime(CLOCK_MONOTONIC, &start);
+        insertionSort(arr2, s);
+        clock_gettime(CLOCK_MONOTONIC, &end);
+        diff2 = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec)/1000000000.0;
+        printf("%d\t%f\t%f\n", s, diff1, diff2);
+        s+=100;
     }
-}
-int main() {
-    dataInput();
-    timer();
     return 0;
 }
