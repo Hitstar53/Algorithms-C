@@ -1,0 +1,61 @@
+#include<stdio.h>
+#include<math.h>
+#include<stdlib.h>
+#include<stdbool.h>
+#include<time.h>
+//generate 50 x and y coordinates randomly and store them in two arrays
+void generateXY(int *x, int *y)
+{
+    // srand(time(NULL));
+    //store in a file
+    FILE *fp = fopen("data.txt", "a");
+    for (int i=0;i<50;i++)
+    {
+        x[i] = rand() % 100;
+        y[i] = rand() % 100;
+        fprintf(fp, "(%d,%d)\n", x[i], y[i]);
+    }
+    fclose(fp);
+    // for (int i=0;i<50;i++)
+    // {
+    //     printf("%d %d\n", x[i], y[i]);
+    // }
+}
+//convex hull with brute force approach
+void convexHull(int *x,int *y)
+{
+    int n = 50;
+    int i, j, k;
+    bool flag;
+    printf("The convex hull is:\n");
+    for (i=0;i<n;i++)
+    {
+        for (j=i+1;j<n;j++)
+        {
+            flag = true;
+            for (k=0;k<n;k++)
+            {
+                if (k==i || k==j)
+                    continue;
+                int val = (y[j] - y[i]) * (x[k] - x[j]) -
+                          (y[k] - y[j]) * (x[j] - x[i]);
+                if (val<0)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag)
+                printf("(%d, %d), (%d, %d)\n", x[i], y[i], x[j], y[j]);
+        }
+    }
+}
+int main(int argc, char const *argv[])
+{
+    //generate 50 x and y coordinates
+    int x[50], y[50];
+    generateXY(x, y);
+    //find the convex hull
+    convexHull(x, y);
+    return 0;
+}
