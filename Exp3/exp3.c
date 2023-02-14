@@ -21,7 +21,7 @@ void convexHull(int *x,int *y)
 {
     int n = 50;
     int i, j, k;
-    bool flag;
+    bool flag, flag1, flag2;
     printf("The convex hull is:\n");
     FILE *fp = fopen("convexhull.txt", "a");
     for (i=0;i<n;i++)
@@ -29,13 +29,19 @@ void convexHull(int *x,int *y)
         for (j=i+1;j<n;j++)
         {
             flag = true;
+            flag1 = true;
+            flag2 = true;
             for (k=0;k<n;k++)
             {
                 if (k==i || k==j)
                     continue;
                 int val = (y[j] - y[i]) * (x[k] - x[j]) -
                           (y[k] - y[j]) * (x[j] - x[i]);
-                if (val<0)
+                if (val < 0)
+                    flag1 = false;
+                else if (val > 0)
+                    flag2 = false;
+                if (!flag1 && !flag2)
                 {
                     flag = false;
                     break;

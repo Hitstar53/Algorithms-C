@@ -16,7 +16,7 @@ turtle.setup(800, 800)
 turtle.title("Graph")
 turtle.bgcolor("white")
 turtle.pencolor("black")
-turtle.pensize(2)
+turtle.pensize(3)
 turtle.speed(0)
 
 #reset turtle
@@ -72,7 +72,7 @@ for i in range(-400, 400, 25):
     turtle.write(i)
 
 #draw points
-for i in range(0, 50):
+for i in range(0, len(x)):
     turtle.penup()
     turtle.goto(x[i], y[i])
     turtle.pendown()
@@ -87,7 +87,7 @@ x2 = x2.astype(float)
 y2 = y2.astype(float)
 
 #draw convex hull
-for i in range(0, 4):
+for i in range(0, len(x1)):
     turtle.penup()
     turtle.goto(x1[i], y1[i])
     turtle.pendown()
