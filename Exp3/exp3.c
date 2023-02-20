@@ -6,8 +6,8 @@
 //generate 50 x & y coordinates
 void generateXY(int *x, int *y)
 {
-    // srand(time(NULL));
-    FILE *fp = fopen("data.txt", "a");
+    srand(time(NULL));
+    FILE *fp = fopen("data.txt", "w");
     for (int i=0;i<50;i++)
     {
         x[i] = rand() % 100;
@@ -23,7 +23,7 @@ void convexHull(int *x,int *y)
     int i, j, k;
     bool flag, flag1, flag2;
     printf("The convex hull is:\n");
-    FILE *fp = fopen("convexhull.txt", "a");
+    FILE *fp = fopen("convexhull.txt", "w");
     for (i=0;i<n;i++)
     {
         for (j=i+1;j<n;j++)

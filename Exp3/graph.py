@@ -5,7 +5,8 @@ import turtle
 import numpy as np
 
 #read data from data.txt file stored as (x,y) on each line as a string
-x, y = np.loadtxt('D:\Algorithms-C\Exp3\data.txt', delimiter=',', unpack=True, dtype='str')
+# x, y = np.loadtxt('D:\Algorithms-C\Exp3\data.txt', delimiter=',', unpack=True, dtype='str')
+x, y = np.loadtxt('D:\Algorithms-C\Exp3\datab.txt', delimiter=',', unpack=True, dtype='str')
 
 #convert string to float
 x = x.astype(float)
@@ -78,15 +79,16 @@ for i in range(0, len(x)):
     turtle.pendown()
     turtle.dot(5)
 
-x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\convexhull.txt', delimiter=',', unpack=True, dtype='str')
+#draw convex hull
+# x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\convexhull.txt', delimiter=',', unpack=True, dtype='str')
+x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\convexhullb.txt', delimiter=',', unpack=True, dtype='str')
 
-#convert string to float
 x1 = x1.astype(float)
 y1 = y1.astype(float)
 x2 = x2.astype(float)
 y2 = y2.astype(float)
 
-#draw convex hull
+turtle.pencolor("red")
 for i in range(0, len(x1)):
     turtle.penup()
     turtle.goto(x1[i], y1[i])
