@@ -5,8 +5,7 @@ import turtle
 import numpy as np
 
 #read data from data.txt file stored as (x,y) on each line as a string
-# x, y = np.loadtxt('D:\Algorithms-C\Exp3\data.txt', delimiter=',', unpack=True, dtype='str')
-x, y = np.loadtxt('D:\Algorithms-C\Exp3\datab.txt', delimiter=',', unpack=True, dtype='str')
+x, y = np.loadtxt('D:\Algorithms-C\Exp3\data.txt', delimiter=',', unpack=True, dtype='str')
 
 #convert string to float
 x = x.astype(float)
@@ -80,8 +79,12 @@ for i in range(0, len(x)):
     turtle.dot(5)
 
 #draw convex hull
-# x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\convexhull.txt', delimiter=',', unpack=True, dtype='str')
-x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\convexhullb.txt', delimiter=',', unpack=True, dtype='str')
+#brute force method
+# x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\ch1.txt', delimiter=',', unpack=True, dtype='str')
+#graham scan method
+x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\ch2.txt', delimiter=',', unpack=True, dtype='str')
+#divide and conquer method
+# x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\ch3.txt', delimiter=',', unpack=True, dtype='str')
 
 x1 = x1.astype(float)
 y1 = y1.astype(float)
