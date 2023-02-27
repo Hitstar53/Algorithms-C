@@ -84,7 +84,7 @@ for i in range(0, len(x)):
 #graham scan method
 x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\ch2.txt', delimiter=',', unpack=True, dtype='str')
 #divide and conquer method
-# x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\ch3.txt', delimiter=',', unpack=True, dtype='str')
+#x1,y1,x2,y2 = np.loadtxt('D:\Algorithms-C\Exp3\ch3.txt', delimiter=',', unpack=True, dtype='str')
 
 x1 = x1.astype(float)
 y1 = y1.astype(float)

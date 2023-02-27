@@ -57,10 +57,74 @@ void generate_matrices()
     }
     fclose(fp);
 }
-//matrix chain multiplication using dynamic programming approach
+//matrix chain multiplication using dynamic programming
+void load_matices()
+{
+    FILE *fp;
+    fp = fopen("matrices.txt", "r");
+    int n, m;
+    fscanf(fp, "%d %d", &n, &m);
+    int a[n][m];
+    int b[m][n];
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            fscanf(fp, "%d", &a[i][j]);
+        }
+    }
+    fscanf(fp, "%d %d", &m, &n);
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            fscanf(fp, "%d", &b[i][j]);
+        }
+    }
+    fclose(fp);
+    //print matrix a and b
+    printf("Matrix A:\n");
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            printf("%d ", a[i][j]);
+        }
+        printf("\n");
+    }
+    printf("Matrix B:\n");
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            printf("%d ", b[i][j]);
+        }
+        printf("\n");
+    }
+}
+//multiplication of matrices
+void multiply(int a[][10], int b[][10], int c[][10], int n, int m, int p)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < p; j++)
+        {
+            c[i][j] = 0;
+            for (int k = 0; k < m; k++)
+            {
+                c[i][j] += a[i][k] * b[k][j];
+            }
+        }
+    }
+}
+//multiplication of matrices using strassen's algorithm
+void strassen(int a[][10], int b[][10], int c[][10], int n, int m, int p)
+{
 
+}
 int main(int argc, char const *argv[])
 {
     generate_matrices();
+    load_matices();
     return 0;
 }
