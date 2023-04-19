@@ -1,56 +1,54 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <math.h>
-// sum of subsets problem using backtracking
-int n, x[10], w[10], d, sum = 0, flag = 0;
-void sumofsubsets(int cs, int k, int r)
+//declare variables
+int n,currentSet[10],set[10],target,flag=0;
+void sumofsubsets(int currentsum, int k, int r)
 {
-    x[k] = 1;
-    if (cs + w[k] == d)
+    //check if the partial sum is equal to target
+    currentSet[k]=1;
+    if(currentsum+set[k]==target)
     {
-        // printf("Subset: ");
-        for (int i = 0; i <= k; i++)
+        //print the subset
+        for (int i=0;i<=k;i++)
         {
-            if (x[i] == 1)
+            if (currentSet[i]==1)
             {
-                printf("%d ", w[i]);
+                printf("%d ", set[i]);
             }
         }
         printf("\n");
-        // printf("\nSum: %d\n", d);
         flag = 1;
     }
-    else if (cs + w[k] + w[k + 1] <= d)
+    else if (currentsum+set[k]+set[k+1]<=target)
     {
-        sumofsubsets(cs + w[k], k + 1, r - w[k]);
+        sumofsubsets(currentsum+set[k],k+1,r-set[k]);
     }
-    if ((cs + r - w[k] >= d) && (cs + w[k + 1] <= d))
+    if ((currentsum+r-set[k]>=target) && (currentsum+set[k+1]<=target))
     {
-        x[k] = 0;
-        sumofsubsets(cs, k + 1, r - w[k]);
+        currentSet[k] = 0;
+        sumofsubsets(currentsum,k+1,r-set[k]);
     }
 }
 int main(int argc, char const *argv[])
 {
-    int i, r = 0;
-    printf("Enter the number of elements: ");
+    int r=0;
+    printf("Enter no. of elements: ");
     scanf("%d", &n);
     printf("Enter the elements: ");
-    for (i = 0; i < n; i++)
+    for (int i=0;i<n;i++)
     {
-        scanf("%d", &w[i]);
-        r += w[i];
+        scanf("%d", &set[i]);
+        r+=set[i];
     }
     printf("Enter the sum: ");
-    scanf("%d", &d);
-    for (i = 0; i < n; i++)
+    scanf("%d", &target);
+    for (int i=0;i<n;i++)
     {
-        x[i] = 0;
+        currentSet[i] = 0;
     }
-    printf("Subsets with sum %d:\n", d);
-    sumofsubsets(0, 0, r);
-    if (flag == 0)
+    printf("Subsets with sum %d:\n",target);
+    sumofsubsets(0,0,r);
+    if (flag==0)
     {
         printf("No subset found\n");
     }
