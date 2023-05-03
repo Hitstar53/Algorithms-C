@@ -1,0 +1,5 @@
+Enter the text:
+ccaccaaedba 
+Enter the pattern: 
+dba
+Pattern found at index 8

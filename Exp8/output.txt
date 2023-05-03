@@ -1,0 +1,28 @@
+Enter the initial state:
+Enter the goal state:
+The initial state is:
+1 2 3 4 
+5 6 0 8 
+9 10 7 11 
+13 14 15 12 
+The goal state is:
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 0 
+The state after 1 step is:
+1 2 3 4 
+5 6 7 8 
+9 10 0 11 
+13 14 15 12 
+The state after 2 step is:
+1 2 3 4 
+5 6 7 8 
+9 10 11 0 
+13 14 15 12 
+The state after 3 step is:
+1 2 3 4 
+5 6 7 8 
+9 10 11 12 
+13 14 15 0 
+The number of steps required to reach the goal state is 3
