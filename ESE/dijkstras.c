@@ -1,125 +1,60 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
-#include<limits.h>
-//graph data structure in c
-struct edge
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
+#define V 100
+// Finds the vertex with minimum distance value, from the set of vertices not yet included in shortest path tree
+int minDistance(int dist[], int sptSet[], int n)
 {
-    int src;
-    int dest;
-    int weight;
-};
-struct graph
-{
-    int v;
-    int e;
-    struct edge* edges;
-    int **adj;
-};
-//create graph
-struct graph* createGraph(int v,int e)
-{
-    struct graph* g=(struct graph*)malloc(sizeof(struct graph));
-    g->v=v;
-    g->e=e;
-    g->edges=(struct edge*)malloc(e*sizeof(struct edge));
-    g->adj=(int**)malloc(v*sizeof(int*));
-    for(int i=0;i<v;i++)
-    {
-        g->adj[i]=(int*)malloc(v*sizeof(int));
-    }
-    for(int i=0;i<v;i++)
-    {
-        for(int j=0;j<v;j++) 
-        {
-            g->adj[i][j]=0;
-        }
-    }
-    return g;
+    int min = INT_MAX, min_index;
+    for (int v = 0; v < n; v++)
+        if (sptSet[v] == 0 && dist[v] <= min)
+            min = dist[v], min_index = v;
+    return min_index;
 }
-//add edge
-void addEdge(struct graph* g,int src,int dest,int weight)
+// Prints the constructed distance array
+void printSolution(int dist[], int n, int graph[][V])
 {
-    g->adj[src][dest]=weight;
-    g->adj[dest][src]=weight;
-}
-//print graph
-void printGraph(struct graph* g)
-{
-    for(int i=0;i<g->v;i++)
+    printf("Vertex\tDistance from Source\n");
+    for (int i = 0; i < n; i++)
+        printf("%d\t\t%d\n", i, dist[i]);
+    printf("\nAdjacency Matrix:\n");
+    for (int i = 0; i < n; i++)
     {
-        for(int j=0;j<g->v;j++)
-        {
-            printf("%d ",g->adj[i][j]);
-        }
+        for (int j = 0; j < n; j++)
+            printf("%d ", graph[i][j]);
         printf("\n");
     }
 }
-//dijkstra's algorithm acc. to cormen
-void dijkstra(struct graph* g,int src)
+// Function that implements Dijkstra's single source shortest path algorithm for a graph represented using adjacency matrix representation
+void dijkstra(int graph[][V], int src, int n)
 {
-    int dist[g->v]; //to store the shortest dist from src
-    int visited[g->v]; //to keep track of visited nodes
-    for(int i=0;i<g->v;i++)
+    int dist[n], sptSet[n];
+
+    for (int i = 0; i < n; i++)
+        dist[i] = INT_MAX, sptSet[i] = 0;
+    dist[src] = 0;
+
+    for (int count = 0; count < n - 1; count++)
     {
-        dist[i]=INT_MAX; //initial dists to infinity
-        visited[i]=0; //initially all nodes are unvisited
+        int u = minDistance(dist, sptSet, n);
+        sptSet[u] = 1;
+        for (int v = 0; v < n; v++)
+            if (!sptSet[v] && graph[u][v] && dist[u] != INT_MAX && dist[u] + graph[u][v] < dist[v])
+                dist[v] = dist[u] + graph[u][v];
     }
-    dist[src]=0; //dist of src from itself is 0
-    //loop through all vertices except the src
-    for(int i=0;i<g->v;i++)
-    {
-        int min=INT_MAX;
-        int u;
-        //find unvisited vertex with the min dist from src
-        for(int j=0;j<g->v;j++) 
-        {
-            if(visited[j]==0 && dist[j]<min)
-            {
-                min=dist[j];
-                u=j;
-            }
-        }
-        visited[u] = 1; //mark the selected vertex as visited
-        //update dist of unvisited neighbours of current vertex
-        for(int j=0;j<g->v;j++)
-        {
-            if(visited[j]==0 && g->adj[u][j]!=0 && dist[u]+g->adj[u][j]<dist[j])
-            {
-                dist[j]=dist[u]+g->adj[u][j];
-            }
-        }
-    }
-    //printing the shortest dist from src to all vertices
-    printf("Dijkstra's Algorithm\nVertex\tDist\n");
-    for(int i=0;i<g->v;i++)
-    {
-        printf("%d\t%d\n",i,dist[i]);
-    }
+    printSolution(dist, n, graph);
 }
-int main(int argc, char const *argv[])
+int main()
 {
-    int v,e;
+    int n, graph[V][V], src;
     printf("Enter the number of vertices: ");
-    scanf("%d",&v);
-    printf("Enter the number of edges: ");
-    scanf("%d",&e);
-    struct graph* g = createGraph(v,e);
-    printf("Enter edges: \n");
-    int src,dest,weight;
-    for(int i=0;i<e;i++)
-    {
-        printf("Enter edge %d: ",i+1);
-        scanf("%d %d %d",&src,&dest,&weight);
-        addEdge(g,src,dest,weight);
-        g->edges[i].src=src;
-        g->edges[i].dest=dest;
-        g->edges[i].weight=weight;
-    }
-    printf("The adjacency matrix is: \n");
-    printGraph(g);
-    printf("\nEnter source vertex: ");
-    scanf("%d",&src);
-    dijkstra(g,src);
+    scanf("%d", &n);
+    printf("Enter the adjacency matrix:\n");
+    for (int i = 0; i < n; i++)
+        for (int j = 0; j < n; j++)
+            scanf("%d", &graph[i][j]);
+    printf("Enter the source vertex: ");
+    scanf("%d", &src);
+    dijkstra(graph, src, n);
     return 0;
 }
