@@ -18,7 +18,7 @@ Here is a table summarizing the algorithms along with their best-case, average-c
 | Fractional Knapsack (Greedy)| Ω(n log n)       | Θ(n log n)           | O(n log n)             |
 | N-Queen Problem (Backtracking) | Ω(n!)         | Θ(n!)                | O(n!)                  |
 | Subset Sum (Backtracking)   | Ω(2^n)           | Θ(2^n)               | O(2^n)                 |
-| Graph Coloring              | Ω(n + m)         | Θ(n + m)             | O(n + m)               |
+| Graph Coloring              | Ω(m^V)           | Θ(m^V)               | O(m^V)                 |
 | 0/1 Knapsack (Branch & Bound) | Ω(n * W)       | Θ(n * W)             | O(n * W)               |
 | Traveling Salesman (Branch & Bound) | Ω(n^2 * 2^n) | Θ(n^2 * 2^n)     | O(n^2 * 2^n)           |
 | 15 Puzzle Problem           | Ω(b^d)           | Θ(b^d)               | O((n! * log n!)        |
