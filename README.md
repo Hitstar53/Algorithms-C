@@ -1,5 +1,6 @@
-# Algorithms-C
-Here is a table summarizing the algorithms along with their best-case, average-case, and worst-case time complexities:
+# Analysis of Algorithms in C
+
+## Here is a table summarizing the algorithms along with their best-case, average-case, and worst-case time complexities:
 
 | Algorithm                   | Best Case         | Average Case         | Worst Case             |
 |-----------------------------|------------------|----------------------|------------------------|
@@ -26,33 +27,5 @@ Here is a table summarizing the algorithms along with their best-case, average-c
 | Set Cover (Approximation)   | Ω(2^n)           | Θ(2^n)               | O(2^n)                 |
 | Rabin-Karp Algorithm        | Ω(n + m)         | Θ(n + m)             | O(n * m)               |
 | Knuth-Morris-Pratt Algorithm| Ω(n + m)         | Θ(n + m)             | O(n + m)               |
-
-## table with the time complexities of the algorithms:
-
-| Algorithm | Best Case | Average Case | Worst Case |
-|---|---|---|---|
-| Selection Sort | O(n^2) | O(n^2) | O(n^2) |
-| Insertion Sort | O(n) | O(n^2) | O(n^2) |
-| Merge Sort | O(n log(n)) | O(n log(n)) | O(n log(n)) |
-| Quick Sort | O(n log(n)) | O(n log(n)) | O(n^2) |
-| Binary Search | O(log(n)) | O(log(n)) | O(log(n)) |
-| Strassen's Multiplication | O(n^2.8074) | O(n^2.8074) | O(n^2.8074) |
-| Matrix Chain Multiplication | O(n^3) | O(n^3) | O(n^3) |
-| Longest Common Subsequence | O(mn) | O(mn) | O(mn) |
-| Job Sequencing (Greedy) | O(n log(n)) | O(n log(n)) | O(n log(n)) |
-| Dijkstra's | O(E + V log(V)) | O(E + V log(V)) | O(E + V log(V)) |
-| Prim's | O(E log(V)) | O(E log(V)) | O(E log(V)) |
-| Kruskal's | O(E log(V)) | O(E log(V)) | O(E log(V)) |
-| Fractional Knapsack (Greedy) | O(n log(n)) | O(n log(n)) | O(n log(n)) |
-| N-Queen Problem (Backtracking) | O(2^n) | O(2^n) | O(2^n) |
-| Sum of Subsets (Backtracking) | O(2^n) | O(2^n) | O(2^n) |
-| Graph Coloring | O(n! / (2^n)) | O(n! / (2^n)) | O(n! / (2^n)) |
-| 0/1 Knapsack (DP and Branch-Bound) | O(nW) | O(nW) | O(nW) |
-| Travelling Salesman (Branch and Bound) | O(2^n) | O(2^n) | O(2^n) |
-| 15 Puzzle Problem | O(n!) | O(n!) | O(n!) |
-| Vertex Cover (Approximation) | O(2^n) | O(2^n) | O(2^n) |
-| Set Cover (Approximation) | O(2^n) | O(2^n) | O(2^n) |
-| Rabin-Karp | O(m + n) | O(m + n) | O(m + n) |
-| Knuth-Morris-Pratt | O(m + n) | O(m + n) | O(m + n) |
 
 Please note that these are just asymptotic complexities, and the actual running time of an algorithm may vary depending on the input data.
