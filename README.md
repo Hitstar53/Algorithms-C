@@ -1,6 +1,6 @@
 # Analysis of Algorithms in C
 
-## Here is a table summarizing the algorithms along with their best-case, average-case, and worst-case time complexities:
+Here is a table summarizing the algorithms along with their best-case, average-case, and worst-case time complexities:
 
 | Algorithm                   | Best Case         | Average Case         | Worst Case             |
 |-----------------------------|------------------|----------------------|------------------------|
