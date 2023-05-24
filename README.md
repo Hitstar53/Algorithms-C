@@ -2,7 +2,7 @@
 
 Here is a table summarizing the algorithms along with their best-case, average-case, and worst-case time complexities:
 
-| Algorithm                   | Best Case         | Average Case         | Worst Case             |
+| Algorithm                   | Best Case        | Average Case         | Worst Case             |
 |-----------------------------|------------------|----------------------|------------------------|
 | Selection Sort              | Ω(n^2)           | Θ(n^2)               | O(n^2)                 |
 | Insertion Sort              | Ω(n)             | Θ(n^2)               | O(n^2)                 |
@@ -29,31 +29,3 @@ Here is a table summarizing the algorithms along with their best-case, average-c
 | Knuth-Morris-Pratt Algorithm| Ω(n + m)         | Θ(n + m)             | O(n + m)               |
 
 Please note that these are just asymptotic complexities, and the actual running time of an algorithm may vary depending on the input data.
-
-Here is a table summarizing the algorithms along with their recurrence relations:
-
-| Algorithm                   | Recurrence Relation                                          |
-|-----------------------------|-------------------------------------------------------------|
-| Selection Sort              | T(n) = T(n-1) + Θ(n)                                        |
-| Insertion Sort              | T(n) = T(n-1) + Θ(n)                                        |
-| Merge Sort                  | T(n) = 2T(n/2) + Θ(n)                                       |
-| Quick Sort                  | T(n) = T(k) + T(n-k-1) + Θ(n) (for some constant k)         |
-| Binary Search               | T(n) = T(n/2) + Θ(1)                                        |
-| Strassen's Multiplication   | T(n) = 7T(n/2) + Θ(n^2)                                    |
-| Matrix Chain Multiplication | T(n) = T(k) + T(n-k-1) + Θ(n^2) (for some constant k)       |
-| Longest Common Subsequence  | T(m, n) = T(m-1, n-1) + Θ(1) (depending on the approach)    |
-| Job Sequencing (Greedy)     | T(n) = Θ(n log n)                                           |
-| Dijkstra's Algorithm        | T(V, E) = O((V + E) log V)                                  |
-| Prim's Algorithm            | T(E log V) = O(E log V)                                     |
-| Kruskal's Algorithm         | T(E log E) = O(E log E)                                     |
-| Fractional Knapsack (Greedy)| T(n) = Θ(n log n)                                           |
-| N-Queen Problem (Backtracking) | T(n) = O(n!)                                              |
-| Subset Sum (Backtracking)   | T(2^n) = O(2^n)                                             |
-| Graph Coloring              | T(n + m) = O(n + m)                                         |
-| 0/1 Knapsack (DP and Branch-and-Bound) | T(n * W) = O(n * W)                                   |
-| Traveling Salesman (Branch-and-Bound) | T(n^2 * 2^n) = O(n^2 * 2^n)                           |
-| 15 Puzzle Problem           | T((n! * log n!) = O((n! * log n!)                          |
-| Vertex Cover (Approximation) | -                                                           |
-| Set Cover (Approximation)   | -                                                           |
-| Rabin-Karp Algorithm        | T(n, m) = O(n + m)                                          |
-| Knuth-Morris-Pratt Algorithm| T(n, m) = O(n + m)                                          |
